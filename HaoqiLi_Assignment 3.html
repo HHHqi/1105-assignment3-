@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment 3</title>
+        <style>
+            body {
+                font-family: helvetica;
+            }
+            h1 {
+                color: crimson;
+            }
+            em { 
+                font-weight: bold; 
+                font-style: normal; 
+                text-decoration: underline; 
+                font-size: 1.2em; 
+            }
+            li {
+                margin: 20px;
+            }
+            ol { 
+                width: 700px; 
+                position: relative; 
+                left: 50%; 
+                margin-left: -350px;
+            }
+            ol > li > ol > li {
+                margin: 10px;
+            }
+            p { 
+                width: 700px; 
+                position: relative; 
+                left: 50%; 
+                margin-left: -350px;
+            }
+            h1, h2 {
+                text-align:center;
+            }
+            ul > li {
+                margin-top: 0; 
+                margin-bottom: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Introduction to Programming Assignment 3</h1>
+        <h2>Objects</h2>
+
+        <p>
+            Complete the following tasks. Name your html file <span style="font-size:1.05rem; color:blue;"><em>Name</em>_Assignment_3</span> and submit it before the deadline.
+            <br>
+            <em>60%</em> of the marks will go to successfully completing the tasks free of errors.
+            <br>
+            <em>20%</em> of the marks will go to how well you comment your code. This also incorporates good naming conventions for variables & <strong>proper formatting/organisation of your code</strong>.
+            <br>
+            <em>20%</em> of the marks will go to how efficient your code is using the methods you have learned up to this point.
+        </p>
+
+        <ol>
+
+            <li><em>Detailed Country Objects</em>
+                <br>
+                <ul>
+                    <li>Create 3 objects. An object for America, France and UK.</li>
+                    <li>Have these objects store a method called stateDetails which <strongs>returns</strongs> the following string<br><br>
+                        "X is a country with a population of X and the capital city is X. This country <u>is/is not</u> a monarchy."<br><br>
+                    Make sure to use "is" or "is not" to say whether the country is a monarchy or not.</li>
+                    <li>Place these 3 objects in an array.</li>
+                    <li>Create a function that takes in an array (the array of objects) as a parameter.</li>
+                    <li>Have this function loop through the array and console.log the stateDetails() method from each object so that we see each country's description in the console.</li>
+                </ul>
+            </li>
+
+            <script>
+                // ====================
+                // 1.) Detailed Country Objects
+                // ====================
+                function StateDetails (countryName,population,capitalCity) {        //creat object, it include the object information
+                    this.uname = countryName;            // need to use this before object
+                    this.population = population;           
+                    this.capitalCity = capitalCity;
+                    this.monarchy = function( monarchy) {
+                        console.log(monarchy);
+                    }
+                }
+
+               const usa = new StateDetails('America',332403650,'Washington, D.C.', );
+                console.log(`${usa.uname} is a country with a population of ${usa.population} and the capital city is ${usa.capitalCity}`)  
+                usa.monarchy('this country is not a monarchy country.');
+
+                const fra = new StateDetails('France',65601526,'Paris', );
+                console.log(`${fra.uname} is a country with a population of ${fra.population} and the capital city is ${fra.capitalCity}`)
+                fra.monarchy('this country is not a monarchy country.');
+
+                const unk = new StateDetails('UK',68696018,'London', );
+                console.log(`${unk.uname} is a country with a population of ${unk.population} and the capital city is ${unk.capitalCity}`)
+                unk.monarchy('this country is a monarchy country.');
+
+            </script>
+
+            <li><em>Counting Items in Huge Array</em>
+                <br>
+                The array below contains a bunch of strings in various amounts. Create an object to help you count each element in the array and in a single console.log, log the following:<br><br>
+                "A = ?<br>
+                B = ?<br>
+                C = ?<br>
+                ...<br>
+                Z = ?"<br><br>
+                where ? is the number of times that the letter appears in the array. Each letter that appears in the array should be present in this log. Finally, console.log "<strong>$</strong> appears the most in the array at <strong>@</strong> times" where <strong>$</strong> is the most common letter and <strong>@</strong> is the number of times it is present in the array.
+                <p><strong>Read this part if you are having difficulty coming up with a solution.</strong> You have completed a question that resembles this in the In Class Tasks. However there are probably too many letters in this array for you to hard code them in as properties. Come up with a system that loops through the array, creates properties representing the letters if they are discovered for the first time, and increments the count on subsequent iterations in the loop when the letter is seen again. The object method <code>hasOwnProperty()</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty">might be useful here.</a></p>
+            </li>
+
+            <script>
+                // =================== 
+                // 2.) Counting Items in Huge Array
+                // ===================
+                
+                const bigLettersArr = [ "X","E","Q","M","L","L","L","B","X","C","A","F",
+                                        "X","W","B","W","A","F","D","Z","B","C","L","F",
+                                        "M","E","B","E","A","M","L","L","B","G","L","G",
+                                        "H","F","H","G","M","A","F","B","B","C","G","F",
+                                        "H","Z","B","L","L","H","J","L","L","C","A","M",
+                                        "A","X","W","K","W","A","J","B","L","C","A","M",
+                                        "B","K","M","R","A","L","L","B","G","W","J","F",
+                                        "H","Z","B","L","L","H","U","L","L","C","A","P",
+                                        "U","X","W","K","W","A","J","R","T","C","A","M",
+                                        "L","K","U","E","U","B","U","B","G","W","J","F",
+                                        "X","E","Q","M","L","L","O","B","X","C","A","F",
+                                        "X","W","I","W","A","F","K","Z","B","C","L","F",
+                                        "M","E","I","E","A","M","L","L","B","G","L","G",
+                                        "H","F","H","G","D","A","F","B","B","C","G","F",
+                                        "K","Z","R","L","L","H","J","L","L","C","A","M",
+                                        "A","X","W","K","W","A","N","B","L","C","A","M",
+                                        "B","K","M","R","A","N","L","B","G","W","J","F",
+                                        "H","Z","B","L","N","H","U","L","D","C","A","M",
+                                        "U","X","W","K","W","A","J","R","T","C","A","M",
+                                        "P","K","U","D","U","B","U","B","G","W","J","F"];
+
+
+                    const o = {           // Create an object
+                        A:0,    // set everything = 0.
+                        B:0,
+                        C:0,
+                        D:0,
+                        E:0,
+                        F:0,
+                        G:0,
+                        H:0,
+                        I:0,
+                        J:0,
+                        K:0,
+                        L:0,
+                        M:0,
+                        N:0,
+                        O:0,
+                        P:0,
+                        Q:0,
+                        R:0,
+                        S:0,
+                        T:0,
+                        U:0,
+                        V:0,
+                        W:0,
+                        X:0,
+                        Y:0,
+                        Z:0,
+                       
+                        
+                    };
+
+                    for (let letter of bigLettersArr) {  // use for loop to check object in array
+            		o[ letter ] += 1; 
+            	}
+
+            	console.log(o);
+
+            	let lettersText = "";
+
+            	for (let key in o) {
+                    lettersText += `${key} = ${o[key]}\n`;
+        
+
+                    console.log(lettersText);
+                }
+            </script>
+        </ol>    
+    </body>
+</html>
